@@ -1,13 +1,15 @@
 import Hero from "@/components/Hero";
-import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
+import Navigation from "@/components/Navigation";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-900">
-      <Hero />
-      <Experience />
-      <Projects />
-    </div>
+    <>
+      <Navigation />
+      <div className="min-h-screen bg-gray-900 pt-16">
+        <Hero />
+        <Projects />
+      </div>
+    </>
   );
 }
