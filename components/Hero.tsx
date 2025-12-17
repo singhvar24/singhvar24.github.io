@@ -5,10 +5,10 @@ import { useEffect, useState } from "react";
 
 export default function Hero() {
   const [text, setText] = useState("");
-  const fullText = "Varnika Singh — AI & Cloud Engineer";
   const [isTypingComplete, setIsTypingComplete] = useState(false);
 
   useEffect(() => {
+    const fullText = "Varnika Singh — AI & Cloud Engineer";
     let index = 0;
     const typingInterval = setInterval(() => {
       if (index < fullText.length) {
