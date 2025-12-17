@@ -51,7 +51,7 @@ export default function Experience() {
           <div className="space-y-12">
             {experiences.map((exp, index) => (
               <motion.div
-                key={index}
+                key={exp.company}
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}

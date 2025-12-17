@@ -34,7 +34,7 @@ export default function Projects() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <motion.div
-              key={index}
+              key={project.name}
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -49,9 +49,9 @@ export default function Projects() {
                 {project.description}
               </p>
               <div className="flex flex-wrap gap-2">
-                {project.tags.map((tag, tagIndex) => (
+                {project.tags.map((tag) => (
                   <span
-                    key={tagIndex}
+                    key={tag}
                     className="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-sm font-medium border border-blue-500/30"
                   >
                     {tag}
