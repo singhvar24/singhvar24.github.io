@@ -184,9 +184,11 @@
     }
 
     /* ─────────────────────────────────────────────
-   NAVIGATION
+   NAVIGATION — fixed, works on all screen sizes
 ───────────────────────────────────────────── */
-    nav {
+
+    /* Main bar */
+    #main-nav {
       position: fixed;
       top: 0;
       left: 0;
@@ -195,62 +197,70 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 clamp(1rem, 4vw, 2.5rem);
-      background: rgba(10, 10, 15, .88);
+      gap: 1rem;
+      padding: 0 clamp(1rem, 3vw, 2rem);
+      background: rgba(10, 10, 15, .92);
       backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border-dark);
-      z-index: 600;
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, .07);
+      z-index: 800;
       transition: background .25s, border-color .25s;
     }
 
-    nav.nav-light {
-      background: rgba(255, 255, 255, .92);
-      border-bottom: 1px solid var(--border-light);
+    /* Light variant (pages 2 & 4) */
+    #main-nav.nav-light {
+      background: rgba(255, 255, 255, .95);
+      border-bottom: 1px solid rgba(10, 10, 15, .1);
     }
 
+    /* Logo */
     .nav-logo {
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
-      font-size: 1rem;
-      color: var(--white);
+      font-size: .95rem;
+      color: #ffffff;
       text-decoration: none;
-      letter-spacing: -0.01em;
+      letter-spacing: -.01em;
       flex-shrink: 0;
+      white-space: nowrap;
     }
 
-    nav.nav-light .nav-logo {
+    #main-nav.nav-light .nav-logo {
       color: var(--ink);
     }
 
+    /* Desktop link list */
     .nav-links {
       display: flex;
-      gap: clamp(0.5rem, 2vw, 1.75rem);
-      list-style: none;
       align-items: center;
+      list-style: none;
+      gap: clamp(.75rem, 1.8vw, 1.6rem);
+      flex: 1;
+      justify-content: flex-end;
     }
 
     .nav-links a {
-      font-size: var(--fs-xs);
-      font-weight: 500;
-      letter-spacing: .08em;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .09em;
       text-transform: uppercase;
       text-decoration: none;
       color: #6e6e82;
-      transition: color .2s;
       white-space: nowrap;
-      padding: 2px 0;
+      padding: 4px 0;
       position: relative;
+      transition: color .2s;
     }
 
     .nav-links a::after {
       content: '';
       position: absolute;
-      bottom: -2px;
+      bottom: 0;
       left: 0;
       width: 0;
       height: 1.5px;
       background: var(--indigo);
-      transition: width .25s;
+      transition: width .22s;
     }
 
     .nav-links a:hover,
@@ -258,41 +268,63 @@
       color: var(--indigo-l);
     }
 
-    nav.nav-light .nav-links a:hover,
-    nav.nav-light .nav-links a.active {
-      color: var(--indigo);
-    }
-
     .nav-links a:hover::after,
     .nav-links a.active::after {
       width: 100%;
     }
 
-    nav.nav-light .nav-links a {
+    /* Light-page overrides */
+    #main-nav.nav-light .nav-links a {
       color: #52525e;
     }
 
-    /* Hamburger */
+    #main-nav.nav-light .nav-links a:hover,
+    #main-nav.nav-light .nav-links a.active {
+      color: var(--indigo);
+    }
+
+    /* ── Hamburger button — always rendered, hidden on wide screens ── */
     .ham {
       display: none;
+      /* shown via media query below */
       flex-direction: column;
+      justify-content: center;
       gap: 5px;
-      background: none;
-      border: none;
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 6px;
       cursor: pointer;
-      padding: 4px;
+      padding: 0;
+      flex-shrink: 0;
+      transition: background .2s, border-color .2s;
+    }
+
+    .ham:hover {
+      background: rgba(255, 255, 255, .1);
+    }
+
+    #main-nav.nav-light .ham {
+      background: rgba(10, 10, 15, .05);
+      border-color: rgba(10, 10, 15, .12);
+    }
+
+    #main-nav.nav-light .ham:hover {
+      background: rgba(10, 10, 15, .1);
     }
 
     .ham span {
       display: block;
-      width: 20px;
+      width: 16px;
       height: 1.5px;
-      background: #6e6e82;
+      background: #9090a8;
       border-radius: 2px;
-      transition: all .25s;
+      margin: 0 auto;
+      transition: transform .25s, opacity .25s;
     }
 
-    nav.nav-light .ham span {
+    #main-nav.nav-light .ham span {
       background: #52525e;
     }
 
@@ -308,43 +340,72 @@
       transform: translateY(-6.5px) rotate(-45deg);
     }
 
-    /* Mobile drawer */
-    .mob-drawer {
+    /* ── Mobile dropdown drawer ── */
+    #mob-drawer {
       display: none;
+      /* shown via JS toggle */
       position: fixed;
       top: var(--nav-h);
       left: 0;
       right: 0;
-      background: var(--ink-2);
-      border-bottom: 1px solid var(--border-dark);
-      padding: 1rem 1.5rem 1.5rem;
+      background: #18181f;
+      border-bottom: 1px solid rgba(255, 255, 255, .07);
+      z-index: 799;
       flex-direction: column;
-      gap: 0;
-      z-index: 599;
+      padding: .5rem 0 1rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, .4);
     }
 
-    .mob-drawer.open {
+    #mob-drawer.open {
       display: flex;
     }
 
-    .mob-drawer a {
-      font-size: var(--fs-sm);
-      font-weight: 500;
-      letter-spacing: .06em;
+    #mob-drawer a {
+      display: block;
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .08em;
       text-transform: uppercase;
       text-decoration: none;
-      color: #6e6e82;
-      padding: .75rem 0;
-      border-bottom: 1px solid var(--border-dark);
-      transition: color .2s;
+      color: #8888a0;
+      padding: .85rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, .05);
+      transition: color .18s, background .18s;
     }
 
-    .mob-drawer a:last-child {
-      border: none;
+    #mob-drawer a:last-child {
+      border-bottom: none;
     }
 
-    .mob-drawer a:hover {
+    #mob-drawer a:hover,
+    #mob-drawer a.mob-active {
       color: var(--indigo-l);
+      background: rgba(79, 70, 229, .06);
+    }
+
+    /* ── Responsive breakpoints ── */
+
+    /* 960px: tighten gaps slightly */
+    @media (max-width: 960px) {
+      .nav-links {
+        gap: clamp(.5rem, 1.2vw, 1rem);
+      }
+
+      .nav-links a {
+        font-size: .68rem;
+        letter-spacing: .07em;
+      }
+    }
+
+    /* 720px: hide desktop links, show hamburger */
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+      }
+
+      .ham {
+        display: flex;
+      }
     }
 
     /* Page dots */
@@ -1914,17 +1975,8 @@
     }
 
     /* ─────────────────────────────────────────────
-   RESPONSIVE
+   RESPONSIVE — non-nav rules
 ───────────────────────────────────────────── */
-    @media (max-width: 720px) {
-      .nav-links {
-        display: none;
-      }
-
-      .ham {
-        display: flex;
-      }
-    }
 
     @media (max-width: 480px) {
       :root {
@@ -1956,6 +2008,29 @@
         flex-direction: column;
         gap: .4rem;
       }
+
+      .proj-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .edu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cg-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Landscape phone — stop hero overflowing */
+    @media (max-height: 600px) and (orientation: landscape) {
+      .hero-body {
+        padding-top: calc(var(--nav-h) + .75rem);
+      }
+
+      .h-scroll {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -1967,9 +2042,9 @@
   <div id="prog"></div>
 
   <!-- ══════════ NAV ══════════ -->
-  <nav id="nav">
+  <nav id="main-nav">
     <a href="#" class="nav-logo" onclick="go(1);return false">Varnika Singh</a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="nav-links">
       <li><a href="#" onclick="go(1);return false" data-pg="1">Home</a></li>
       <li><a href="#" onclick="go(2);return false" data-pg="2">Skills</a></li>
       <li><a href="#" onclick="go(3);return false" data-pg="3">Experience</a></li>
@@ -1977,19 +2052,20 @@
       <li><a href="#" onclick="go(5);return false" data-pg="5">Projects</a></li>
       <li><a href="#" onclick="go(6);return false" data-pg="6">Contact</a></li>
     </ul>
-    <button class="ham" id="ham" aria-label="Open menu">
+    <button class="ham" id="ham" aria-label="Open menu" aria-expanded="false" aria-controls="mob-drawer">
       <span></span><span></span><span></span>
     </button>
   </nav>
 
-  <nav class="mob-drawer" id="mob">
-    <a href="#" onclick="go(1);closeMob();return false">Home</a>
-    <a href="#" onclick="go(2);closeMob();return false">Skills</a>
-    <a href="#" onclick="go(3);closeMob();return false">Experience</a>
-    <a href="#" onclick="go(4);closeMob();return false">Education</a>
-    <a href="#" onclick="go(5);closeMob();return false">Projects</a>
-    <a href="#" onclick="go(6);closeMob();return false">Contact</a>
-  </nav>
+  <!-- Mobile drawer (plain div, not a second nav) -->
+  <div id="mob-drawer" role="navigation" aria-label="Mobile navigation">
+    <a href="#" onclick="go(1);closeMob();return false" data-mpg="1">Home</a>
+    <a href="#" onclick="go(2);closeMob();return false" data-mpg="2">Skills</a>
+    <a href="#" onclick="go(3);closeMob();return false" data-mpg="3">Experience</a>
+    <a href="#" onclick="go(4);closeMob();return false" data-mpg="4">Education</a>
+    <a href="#" onclick="go(5);closeMob();return false" data-mpg="5">Projects</a>
+    <a href="#" onclick="go(6);closeMob();return false" data-mpg="6">Contact</a>
+  </div>
 
   <div class="pg-dots" id="pgdots"></div>
 
@@ -2003,8 +2079,7 @@
 
           <!-- Photo -->
           <div class="h-photo fi">
-            <!-- Replace emoji with: <img src="photos/varnika.jpg" alt="Varnika Singh"/> -->
-            🌸
+            <img src="photos/Varnika_img.png" alt="Varnika Singh" />
           </div>
 
           <!-- Status badges -->
@@ -2086,8 +2161,9 @@
           <div class="chips">
             <span class="chip chip-d" data-tip="4+ yrs · primary language">Python</span>
             <span class="chip chip-d" data-tip="3+ yrs · full-stack">JavaScript</span>
-            <span class="chip chip-d" data-tip="3+ yrs · typed JS">TypeScript</span>
+            <span class="chip chip-d" data-tip="Caching &amp; pipelines · HPE">Nodejs</span>
             <span class="chip chip-d" data-tip="Data analysis &amp; ML">R</span>
+            <span class="chip chip-d" data-tip="Data analysis &amp; ML">Bash</span>
             <span class="chip chip-d" data-tip="Databases &amp; pipelines">SQL</span>
           </div>
         </div>
@@ -2135,26 +2211,31 @@
           <div class="chips">
             <span class="chip chip-d" data-tip="CI/CD pipelines · HPE">Jenkins</span>
             <span class="chip chip-d" data-tip="Automated workflows">GitHub Actions</span>
+            <span class="chip chip-d" data-tip="Internal tooling · Hysata">Confluence</span>
             <span class="chip chip-d" data-tip="Metrics &amp; dashboards">Grafana</span>
             <span class="chip chip-d" data-tip="System monitoring">Prometheus</span>
             <span class="chip chip-d" data-tip="Business intelligence">PowerBI</span>
             <span class="chip chip-d" data-tip="Internal tooling · Hysata">Retool</span>
             <span class="chip chip-d" data-tip="Agile project management">Jira</span>
+            <span class="chip chip-d" data-tip="CI/CD pipelines · HPE">SSO</span>
+            <span class="chip chip-d" data-tip="System monitoring">Azure AD</span>
+            <span class="chip chip-d" data-tip="Business intelligence">MFA</span>
           </div>
         </div>
       </div>
-
-      <div class="learn-strip fi">
-        <span class="learn-lbl">Currently exploring</span>
-        <div class="learn-chips">
-          <span class="lc">Agentic Workflows</span>
-          <span class="lc">Model Context Protocol</span>
-          <span class="lc">Multi-agent Systems</span>
-          <span class="lc">LLM Cost Optimisation</span>
-        </div>
-      </div>
-
     </div>
+    <br>
+    <div class="learn-strip fi">
+      <span class="learn-lbl">Currently exploring</span>
+      <div class="learn-chips">
+        <span class="lc">Agentic Workflows</span>
+        <span class="lc">Model Context Protocol</span>
+        <span class="lc">Multi-agent Systems</span>
+        <span class="lc">LLM Cost Optimisation</span>
+      </div>
+    </div>
+
+  </div>
   </div>
 
   <!-- ══════════════════════════════════════
@@ -2337,6 +2418,12 @@
           <p class="edu-inst">University of Wollongong, NSW</p>
           <p class="edu-spec">Machine Learning · Big Data · Cybersecurity</p>
           <p class="edu-yr">Feb 2024 – Dec 2025</p>
+          <p class="edu-spec"> View <a
+              href="https://www.myequals.net/sharelink/184c991c-03ad-4b69-8bae-32bccd188fa9/b5d23dc5-c70f-444e-95b4-d86af68f7cc1">UOW
+              Degree</a></p>
+          <p class="edu-spec"> View <a
+              href="https://www.myequals.net/sharelink/309f4239-31c3-46ac-bc1a-31dcd6657b16/e1b4603f-2a82-431c-bab5-a798175fcab5">UOWx
+              Record</a> </p>
         </div>
         <div class="edu-card">
           <span class="edu-flag">Bachelors</span>
@@ -2359,7 +2446,7 @@
         </div>
         <div class="cg-inner">
           <!-- Replace href with your real Anthropic Academy certificate URLs -->
-          <a href="https://anthropic.com" target="_blank" class="cert-card">
+          <a href="https://verify.skilljar.com/c/3mrdj9wbnnh7" target="_blank" class="cert-card">
             <div class="cert-ico ci-a">🤖</div>
             <div class="cert-info">
               <h4>Introduction to Model Context Protocol (MCP)</h4><span>Anthropic Academy · 2026</span>
@@ -2367,7 +2454,7 @@
             <div class="cert-arr">↗</div>
             <div class="cert-stamp st-i">2026</div>
           </a>
-          <a href="https://anthropic.com" target="_blank" class="cert-card">
+          <a href="https://verify.skilljar.com/c/7puh56jz5jt7" target="_blank" class="cert-card">
             <div class="cert-ico ci-a">🤖</div>
             <div class="cert-info">
               <h4>Introduction to Agent Skills</h4><span>Anthropic Academy · 2026</span>
@@ -2375,7 +2462,7 @@
             <div class="cert-arr">↗</div>
             <div class="cert-stamp st-i">2026</div>
           </a>
-          <a href="https://anthropic.com" target="_blank" class="cert-card">
+          <a href="https://verify.skilljar.com/c/pc67g5vgonah" target="_blank" class="cert-card">
             <div class="cert-ico ci-a">🤖</div>
             <div class="cert-info">
               <h4>Building with the Claude API</h4><span>Anthropic Academy · 2026</span>
@@ -2383,7 +2470,7 @@
             <div class="cert-arr">↗</div>
             <div class="cert-stamp st-i">2026</div>
           </a>
-          <a href="https://anthropic.com" target="_blank" class="cert-card">
+          <a href="https://verify.skilljar.com/c/g58u8rbou9kk" target="_blank" class="cert-card">
             <div class="cert-ico ci-a">🤖</div>
             <div class="cert-info">
               <h4>Claude Code in Action</h4><span>Anthropic Academy · 2026</span>
@@ -2400,7 +2487,7 @@
           <span class="cg-tog">▾</span>
         </div>
         <div class="cg-inner">
-          <a href="https://grow.google/certificates/cybersecurity/" target="_blank" class="cert-card">
+          <a href="https://coursera.org/share/1d7176d264cdda1088ec5663e7086fcd" target="_blank" class="cert-card">
             <div class="cert-ico ci-g">🔐</div>
             <div class="cert-info">
               <h4>Google Cybersecurity Certificate</h4><span>Google · Coursera</span>
@@ -2408,9 +2495,9 @@
             <div class="cert-arr">↗</div>
             <div class="cert-stamp st-g">GCP</div>
           </a>
-          <a href="https://learn.microsoft.com/en-us/certifications/azure-fundamentals/" target="_blank"
-            class="cert-card">
-            <div class="cert-ico ci-m">☁️</div>
+          <a href="https://learn.microsoft.com/api/credentials/share/en-us/VarnikaSingh-7097/156EED7D591D6350?sharingId=F6461A32ECE07CC4"
+            target="_blank" class="cert-card">
+            <div class="cert-ico ci-m"><img src="photos/" /> </div>
             <div class="cert-info">
               <h4>Microsoft Azure Fundamentals AZ-900</h4><span>Microsoft Azure</span>
             </div>
@@ -2425,6 +2512,15 @@
             </div>
             <div class="cert-arr">↗</div>
             <div class="cert-stamp st-ib">IBM</div>
+          </a>
+          <a href="https://www.credly.com/badges/f5a24dd9-0a28-4578-8a4b-679cb95ecf24/public_url" target="_blank"
+            class="cert-card">
+            <div class="cert-ico ci-m">☁️</div>
+            <div class="cert-info">
+              <h4>McKinsey Forward Program</h4><span>McKinsey.org</span>
+            </div>
+            <div class="cert-arr">↗</div>
+            <div class="cert-stamp st-m">AZ</div>
           </a>
         </div>
       </div>
@@ -2473,8 +2569,37 @@
             <span class="tpill">FastAPI</span><span class="tpill">UoW Capstone</span>
           </div>
           <div class="proj-links">
-            <a href="#" class="proj-a">GitHub →</a>
+            <a href="https://github.com/singhvar24/calorie-cam-backend/tree/main" class="proj-a">GitHub →</a>
             <a href="#" class="proj-a">Live Demo →</a>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-status">Blockchain 2025</div>
+          <h3>Secure-storage-system</h3>
+          <p> This project facilitated privacy-preserving collaboration in untrusted cloud environments in addition to
+            offering a technically sound and auditable method of file sharing.</p>
+          <div class="proj-tech">
+            <span class="tpill"> SHA-256 </span><span class="tpill">Blockchain </span>
+            <span class="tpill">RSA </span><span class="tpill">Ethereum Sepolia </span>
+          </div>
+          <div class="proj-links">
+            <a href="https://github.com/singhvar24/CSIT953/tree/main" class="proj-a">GitHub →</a>
+            <a href="#" class="proj-a">Live Demo →</a>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-status"> Bachelors Project 2018</div>
+          <h3>Gesture-to-voice-conversion-glove </h3>
+          <p> An arudino UNO based glove that tracks hand movements via sensors and converts them into voice signal
+            through a mobile application </p>
+          <div class="proj-tech">
+            <span class="tpill">IoT</span><span class="tpill">mobile app</span>
+            <span class="tpill">Python</span><span class="tpill">Arduino </span>
+          </div>
+          <div class="proj-links">
+            <a href="#" class="proj-a">GitHub →</a>
+            <a href="https://drive.google.com/file/d/1XQwbGAGWOx2DtFgdmfUtUn4wtn0iJKg1/view?usp=drive_link"
+              class="proj-a">Live Demo →</a>
           </div>
         </div>
       </div>
@@ -2508,7 +2633,7 @@
           </div>
 
           <div class="sl">
-            <img src="photos/img3.png" style="width: 50%; height: auto;" />
+            <img src="photos/img3.png" style="width: 40%; height: auto;" />
           </div>
 
 
@@ -2643,13 +2768,18 @@
       pg.classList.add('current');
       window.scrollTo(0, 0);
 
-      // Nav style — light pages: 2, 4
+      // Nav style: light on pages 2 & 4 (white bg), dark on rest
       const isLight = cur === 2 || cur === 4;
-      document.getElementById('nav').classList.toggle('nav-light', isLight);
+      document.getElementById('main-nav').classList.toggle('nav-light', isLight);
 
-      // Nav link active
+      // Desktop nav active link
       document.querySelectorAll('.nav-links a[data-pg]').forEach(a => {
         a.classList.toggle('active', a.dataset.pg == n);
+      });
+
+      // Mobile drawer active link
+      document.querySelectorAll('#mob-drawer a[data-mpg]').forEach(a => {
+        a.classList.toggle('mob-active', a.dataset.mpg == n);
       });
 
       // Page dots
@@ -2774,9 +2904,27 @@
     function tcg(id) { document.getElementById(id).classList.toggle('col'); }
 
     /* ── Hamburger ── */
-    const hamBtn = document.getElementById('ham'), mobEl = document.getElementById('mob');
-    hamBtn.addEventListener('click', () => { hamBtn.classList.toggle('open'); mobEl.classList.toggle('open'); });
-    function closeMob() { hamBtn.classList.remove('open'); mobEl.classList.remove('open'); }
+    const hamBtn = document.getElementById('ham');
+    const mobDrawer = document.getElementById('mob-drawer');
+
+    hamBtn.addEventListener('click', () => {
+      const isOpen = mobDrawer.classList.toggle('open');
+      hamBtn.classList.toggle('open', isOpen);
+      hamBtn.setAttribute('aria-expanded', isOpen);
+    });
+
+    function closeMob() {
+      mobDrawer.classList.remove('open');
+      hamBtn.classList.remove('open');
+      hamBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    // Close drawer when clicking outside
+    document.addEventListener('click', e => {
+      if (!hamBtn.contains(e.target) && !mobDrawer.contains(e.target)) {
+        closeMob();
+      }
+    });
 
     /* ── Slideshow ── */
     const sls = document.querySelectorAll('.sl'), ssdEl = document.getElementById('ssd');
