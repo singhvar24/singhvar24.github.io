@@ -2180,7 +2180,7 @@
             </div>
 
 
-            <a href="cv/Varnika_Singh_CV.pdf" id="cv-btn" class="btn btn-accent" download hidden>Download CV ↓</a>
+            <a href="cv/Varnika_Singh_CV.pdf" id="cv-btn" class="btn btn-accent" target="_blank" rel="noopener">View CV ↗</a>
             <a href="#" onclick="go(2);return false" class="btn btn-outline-dark">Explore →</a>
           </div>
 
@@ -3057,10 +3057,6 @@
       try { localStorage.setItem('theme', next); } catch (e) { }
       updateNav();
     });
-    // Show the CV button only if the PDF has been uploaded
-    fetch('cv/Varnika_Singh_CV.pdf', { method: 'HEAD' }).then(r => {
-      if (r.ok) document.getElementById('cv-btn').hidden = false;
-    }).catch(() => { });
     updateNav();
   </script>
 </body>
