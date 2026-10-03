@@ -27,40 +27,40 @@
    TOKENS
 ───────────────────────────────────────────── */
     :root {
-      /* Palette — 2025 tech */
-      --ink: #0a0a0f;
-      --ink-2: #18181f;
-      --ink-3: #26262e;
-      --ink-4: #3a3a46;
-      --ink-5: #52525e;
+      /* Palette — navy + teal */
+      --ink: #0b1220;
+      --ink-2: #111a2e;
+      --ink-3: #18243d;
+      --ink-4: #2a3a58;
+      --ink-5: #4a5b7a;
 
-      --indigo: #4f46e5;
-      --indigo-l: #818cf8;
-      --indigo-xl: #c7d2fe;
-      --indigo-dim: rgba(79, 70, 229, .10);
-      --indigo-glow: rgba(79, 70, 229, .18);
+      --accent: #0d9488;
+      --accent-l: #2dd4bf;
+      --accent-xl: #99f6e4;
+      --accent-dim: rgba(13,148,136, .10);
+      --accent-glow: rgba(13,148,136, .18);
 
       --white: #ffffff;
-      --off: #f8f8fb;
-      --off-2: #f0f0f5;
-      --off-3: #e4e4ed;
-      --off-4: #ccccd8;
+      --off: #f4f8fb;
+      --off-2: #ebf1f6;
+      --off-3: #dde6ee;
+      --off-4: #c3d0dc;
 
       --green: #22c55e;
       --green-dim: rgba(34, 197, 94, .12);
 
       /* Per-page bg */
-      --bg-1: #0a0a0f;
+      --bg-1: #0b1220;
       /* Home   — near black   */
       --bg-2: #ffffff;
       /* Skills — pure white    */
-      --bg-3: #0f0f17;
+      --bg-3: #0e1626;
       /* Exp    — deep ink      */
-      --bg-4: #f8f8fb;
+      --bg-4: #f4f8fb;
       /* Proj   — off-white     */
-      --bg-5: #f8f8fb;
+      --bg-5: #f4f8fb;
       /* Proj   — off-white     */
-      --bg-6: #0a0a0f;
+      --bg-6: #0b1220;
       /* Misc   — near black    */
 
       /* Typography scale */
@@ -86,10 +86,10 @@
       --r-xl: 22px;
 
       --border-dark: rgba(255, 255, 255, .07);
-      --border-light: rgba(10, 10, 15, .09);
+      --border-light: rgba(11,18,32, .09);
 
       --shadow-card-dark: 0 1px 3px rgba(0, 0, 0, .4), 0 4px 16px rgba(0, 0, 0, .25);
-      --shadow-card-light: 0 1px 3px rgba(10, 10, 15, .06), 0 4px 16px rgba(10, 10, 15, .08);
+      --shadow-card-light: 0 1px 3px rgba(11,18,32, .06), 0 4px 16px rgba(11,18,32, .08);
     }
 
     /* ─────────────────────────────────────────────
@@ -142,7 +142,7 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: var(--indigo);
+      background: var(--accent);
       pointer-events: none;
       z-index: 9999;
       transform: translate(-50%, -50%);
@@ -154,7 +154,7 @@
       width: 28px;
       height: 28px;
       border-radius: 50%;
-      border: 1.5px solid var(--indigo);
+      border: 1.5px solid var(--accent);
       pointer-events: none;
       z-index: 9998;
       transform: translate(-50%, -50%);
@@ -178,7 +178,7 @@
       left: 0;
       height: 2px;
       width: 0%;
-      background: linear-gradient(90deg, var(--indigo), var(--indigo-l));
+      background: linear-gradient(90deg, var(--accent), var(--accent-l));
       z-index: 9997;
       transition: width .1s linear;
     }
@@ -199,7 +199,7 @@
       justify-content: space-between;
       gap: 1rem;
       padding: 0 clamp(1rem, 3vw, 2rem);
-      background: rgba(10, 10, 15, .92);
+      background: rgba(11,18,32, .92);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(255, 255, 255, .07);
@@ -210,7 +210,7 @@
     /* Light variant (pages 2 & 4) */
     #main-nav.nav-light {
       background: rgba(255, 255, 255, .95);
-      border-bottom: 1px solid rgba(10, 10, 15, .1);
+      border-bottom: 1px solid rgba(11,18,32, .1);
     }
 
     /* Logo */
@@ -259,13 +259,13 @@
       left: 0;
       width: 0;
       height: 1.5px;
-      background: var(--indigo);
+      background: var(--accent);
       transition: width .22s;
     }
 
     .nav-links a:hover,
     .nav-links a.active {
-      color: var(--indigo-l);
+      color: var(--accent-l);
     }
 
     .nav-links a:hover::after,
@@ -280,7 +280,7 @@
 
     #main-nav.nav-light .nav-links a:hover,
     #main-nav.nav-light .nav-links a.active {
-      color: var(--indigo);
+      color: var(--accent);
     }
 
     /* ── Hamburger button — always rendered, hidden on wide screens ── */
@@ -306,12 +306,12 @@
     }
 
     #main-nav.nav-light .ham {
-      background: rgba(10, 10, 15, .05);
-      border-color: rgba(10, 10, 15, .12);
+      background: rgba(11,18,32, .05);
+      border-color: rgba(11,18,32, .12);
     }
 
     #main-nav.nav-light .ham:hover {
-      background: rgba(10, 10, 15, .1);
+      background: rgba(11,18,32, .1);
     }
 
     .ham span {
@@ -348,7 +348,7 @@
       top: var(--nav-h);
       left: 0;
       right: 0;
-      background: #18181f;
+      background: #111a2e;
       border-bottom: 1px solid rgba(255, 255, 255, .07);
       z-index: 799;
       flex-direction: column;
@@ -379,8 +379,8 @@
 
     #mob-drawer a:hover,
     #mob-drawer a.mob-active {
-      color: var(--indigo-l);
-      background: rgba(79, 70, 229, .06);
+      color: var(--accent-l);
+      background: rgba(13,148,136, .06);
     }
 
     /* ── Responsive breakpoints ── */
@@ -433,7 +433,7 @@
 
     .pgd:hover,
     .pgd.active {
-      background: var(--indigo);
+      background: var(--accent);
       transform: scale(1.5);
     }
 
@@ -475,7 +475,7 @@
       content: '';
       flex: 0 0 24px;
       height: 1.5px;
-      background: var(--indigo);
+      background: var(--accent);
     }
 
     .label-row h2 {
@@ -510,7 +510,7 @@
       content: '';
       width: 16px;
       height: 1.5px;
-      background: var(--indigo);
+      background: var(--accent);
       flex-shrink: 0;
     }
 
@@ -544,13 +544,13 @@
       white-space: nowrap;
     }
 
-    .btn-indigo {
-      background: var(--indigo);
+    .btn-accent {
+      background: var(--accent);
       color: #fff;
-      border-color: var(--indigo);
+      border-color: var(--accent);
     }
 
-    .btn-indigo:hover {
+    .btn-accent:hover {
       background: #4338ca;
       border-color: #4338ca;
     }
@@ -562,8 +562,8 @@
     }
 
     .btn-outline-dark:hover {
-      border-color: var(--indigo-l);
-      color: var(--indigo-l);
+      border-color: var(--accent-l);
+      color: var(--accent-l);
     }
 
     .btn-outline-light {
@@ -573,8 +573,8 @@
     }
 
     .btn-outline-light:hover {
-      border-color: var(--indigo);
-      color: var(--indigo);
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
     /* Tags */
@@ -596,13 +596,13 @@
     }
 
     .chip-i {
-      background: var(--indigo-dim);
-      border-color: rgba(79, 70, 229, .22);
-      color: var(--indigo-l);
+      background: var(--accent-dim);
+      border-color: rgba(13,148,136, .22);
+      color: var(--accent-l);
     }
 
     .chip-i:hover {
-      background: rgba(79, 70, 229, .18);
+      background: rgba(13,148,136, .18);
     }
 
     .chip-n {
@@ -623,8 +623,8 @@
     }
 
     .chip-d:hover {
-      border-color: var(--indigo);
-      color: var(--indigo);
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
     /* Chip tooltip */
@@ -671,7 +671,7 @@
 
     /* ─────────────────────────────────────────────
    PAGE 1 — HOME
-   Theme: Near-black / indigo / white text
+   Theme: Navy / teal / white text
 ───────────────────────────────────────────── */
     #p1 {
       background: var(--bg-1);
@@ -697,7 +697,7 @@
       width: clamp(360px, 55vw, 640px);
       height: clamp(360px, 55vw, 640px);
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(79, 70, 229, .08) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(13,148,136, .08) 0%, transparent 70%);
       top: -15%;
       right: -10%;
       pointer-events: none;
@@ -729,14 +729,14 @@
       height: clamp(64px, 10vw, 86px);
       border-radius: 50%;
       background: var(--ink-3);
-      border: 2px solid rgba(79, 70, 229, .3);
+      border: 2px solid rgba(13,148,136, .3);
       margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: clamp(1.3rem, 3vw, 1.8rem);
       overflow: hidden;
-      box-shadow: 0 0 0 6px rgba(79, 70, 229, .06);
+      box-shadow: 0 0 0 6px rgba(13,148,136, .06);
     }
 
     .h-photo img {
@@ -797,8 +797,8 @@
       display: inline-flex;
       align-items: flex-start;
       gap: .65rem;
-      background: rgba(79, 70, 229, .08);
-      border: 1.5px solid rgba(79, 70, 229, .22);
+      background: rgba(13,148,136, .08);
+      border: 1.5px solid rgba(13,148,136, .22);
       border-radius: var(--r-md);
       padding: .55rem .9rem;
       text-decoration: none;
@@ -808,7 +808,7 @@
       width: 30px;
       height: 30px;
       border-radius: 6px;
-      background: var(--indigo-dim);
+      background: var(--accent-dim);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -827,7 +827,7 @@
       font-weight: 700;
       letter-spacing: .1em;
       text-transform: uppercase;
-      color: var(--indigo-l);
+      color: var(--accent-l);
       line-height: 1;
     }
 
@@ -858,7 +858,7 @@
     }
 
     .h-name .accent {
-      color: var(--indigo-l);
+      color: var(--accent-l);
     }
 
     .h-name span.ch {
@@ -891,7 +891,7 @@
 
     .h-tw em {
       font-style: normal;
-      color: var(--indigo-l);
+      color: var(--accent-l);
       font-weight: 500;
     }
 
@@ -920,7 +920,7 @@
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: var(--indigo);
+      background: var(--accent);
       flex-shrink: 0;
       animation: pulse 2.5s infinite;
     }
@@ -952,7 +952,7 @@
       left: 50%;
       transform: translateX(-50%);
       background: var(--ink-3);
-      color: var(--indigo-l);
+      color: var(--accent-l);
       border: 1px solid var(--border-dark);
       font-size: .7rem;
       padding: 4px 11px;
@@ -989,7 +989,7 @@
       display: block;
       width: 1px;
       height: 30px;
-      background: var(--indigo);
+      background: var(--accent);
       opacity: .35;
     }
 
@@ -1035,9 +1035,9 @@
       font-weight: 700;
       letter-spacing: .12em;
       text-transform: uppercase;
-      color: var(--indigo);
-      background: var(--indigo-dim);
-      border: 1px solid rgba(79, 70, 229, .2);
+      color: var(--accent);
+      background: var(--accent-dim);
+      border: 1px solid rgba(13,148,136, .2);
       border-radius: 100px;
       padding: 4px 12px;
     }
@@ -1073,9 +1073,9 @@
 
     .skf:hover,
     .skf.on {
-      background: var(--indigo);
+      background: var(--accent);
       color: #fff;
-      border-color: var(--indigo);
+      border-color: var(--accent);
     }
 
     .sk-grid {
@@ -1144,9 +1144,9 @@
       padding: 4px 12px;
       border-radius: 100px;
       font-size: var(--fs-xs);
-      background: var(--indigo-dim);
-      border: 1px solid rgba(79, 70, 229, .2);
-      color: var(--indigo);
+      background: var(--accent-dim);
+      border: 1px solid rgba(13,148,136, .2);
+      color: var(--accent);
       font-weight: 500;
     }
 
@@ -1189,7 +1189,7 @@
       top: 0;
       bottom: 0;
       width: 1px;
-      background: linear-gradient(to bottom, var(--indigo), rgba(79, 70, 229, .1));
+      background: linear-gradient(to bottom, var(--accent), rgba(13,148,136, .1));
     }
 
     .tli {
@@ -1204,8 +1204,8 @@
     }
 
     .tli:hover {
-      border-color: rgba(79, 70, 229, .3);
-      background: rgba(79, 70, 229, .04);
+      border-color: rgba(13,148,136, .3);
+      background: rgba(13,148,136, .04);
       transform: translateX(3px);
     }
 
@@ -1217,9 +1217,9 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: var(--indigo);
+      background: var(--accent);
       border: 2px solid var(--bg-3);
-      box-shadow: 0 0 0 2px rgba(79, 70, 229, .25);
+      box-shadow: 0 0 0 2px rgba(13,148,136, .25);
     }
 
     .tl-top {
@@ -1252,7 +1252,7 @@
 
     .tl-co {
       font-size: var(--fs-sm);
-      color: var(--indigo-l);
+      color: var(--accent-l);
       font-weight: 500;
       margin-bottom: .4rem;
       opacity: .85;
@@ -1269,9 +1269,9 @@
       display: inline-flex;
       align-items: center;
       gap: 3px;
-      background: rgba(79, 70, 229, .08);
-      border: 1px solid rgba(79, 70, 229, .18);
-      color: var(--indigo-l);
+      background: rgba(13,148,136, .08);
+      border: 1px solid rgba(13,148,136, .18);
+      color: var(--accent-l);
       font-size: .68rem;
       font-weight: 600;
       padding: 2px 9px;
@@ -1315,7 +1315,7 @@
       content: '→';
       position: absolute;
       left: 0;
-      color: var(--indigo);
+      color: var(--accent);
       font-size: .7rem;
       top: .28rem;
     }
@@ -1338,7 +1338,7 @@
     }
 
     #p4 .section-divider::before {
-      background: var(--indigo);
+      background: var(--accent);
     }
 
     #p4 .label-row h2 {
@@ -1359,7 +1359,7 @@
       border-radius: var(--r-lg);
       padding: clamp(1.1rem, 2.5vw, 1.4rem);
       box-shadow: var(--shadow-card-light);
-      border-top: 3px solid var(--indigo);
+      border-top: 3px solid var(--accent);
     }
 
     .edu-flag {
@@ -1368,9 +1368,9 @@
       font-weight: 700;
       letter-spacing: .1em;
       text-transform: uppercase;
-      background: var(--indigo-dim);
-      color: var(--indigo);
-      border: 1px solid rgba(79, 70, 229, .2);
+      background: var(--accent-dim);
+      color: var(--accent);
+      border: 1px solid rgba(13,148,136, .2);
       padding: 3px 10px;
       border-radius: 100px;
       margin-bottom: .7rem;
@@ -1387,7 +1387,7 @@
 
     .edu-inst {
       font-size: var(--fs-sm);
-      color: var(--indigo);
+      color: var(--accent);
       font-weight: 500;
       margin-bottom: .2rem;
     }
@@ -1419,7 +1419,7 @@
     }
 
     .cg-header:hover {
-      color: var(--indigo);
+      color: var(--accent);
     }
 
     .cg-header-label {
@@ -1431,7 +1431,7 @@
     }
 
     .cg-header:hover .cg-header-label {
-      color: var(--indigo);
+      color: var(--accent);
     }
 
     .cg-tog {
@@ -1476,8 +1476,8 @@
 
     .cert-card:hover {
       transform: translateY(-2px);
-      border-color: rgba(79, 70, 229, .3);
-      box-shadow: 0 4px 18px rgba(10, 10, 15, .1);
+      border-color: rgba(13,148,136, .3);
+      box-shadow: 0 4px 18px rgba(11,18,32, .1);
     }
 
     .cert-ico {
@@ -1553,7 +1553,7 @@
     }
 
     .st-i {
-      background: var(--indigo);
+      background: var(--accent);
     }
 
     .st-g {
@@ -1586,7 +1586,7 @@
     }
 
     #p5 .section-divider::before {
-      background: var(--indigo);
+      background: var(--accent);
     }
 
     #p5 .label-row h2 {
@@ -1614,8 +1614,8 @@
 
     .proj-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 28px rgba(10, 10, 15, .12);
-      border-color: rgba(79, 70, 229, .25);
+      box-shadow: 0 8px 28px rgba(11,18,32, .12);
+      border-color: rgba(13,148,136, .25);
     }
 
     .proj-status {
@@ -1680,25 +1680,25 @@
       align-items: center;
       gap: 4px;
       font-size: var(--fs-xs);
-      color: var(--indigo);
+      color: var(--accent);
       font-weight: 600;
       padding: 6px 14px;
-      border: 1.5px solid rgba(79, 70, 229, .25);
+      border: 1.5px solid rgba(13,148,136, .25);
       border-radius: var(--r-sm);
       text-decoration: none;
       transition: all .18s;
     }
 
     .proj-a:hover {
-      background: var(--indigo-dim);
-      border-color: var(--indigo);
+      background: var(--accent-dim);
+      border-color: var(--accent);
     }
 
 
 
     /* ─────────────────────────────────────────────
    PAGE 6 — HOBBIES + CONTACT + MISC
-   Theme: Near-black / indigo accents
+   Theme: Navy / teal accents
 ───────────────────────────────────────────── */
     #p6 {
       background: var(--bg-6);
@@ -1801,8 +1801,8 @@
     }
 
     .ss-btn:hover {
-      border-color: rgba(79, 70, 229, .4);
-      color: var(--indigo-l);
+      border-color: rgba(13,148,136, .4);
+      color: var(--accent-l);
     }
 
     .ss-dots {
@@ -1820,7 +1820,7 @@
     }
 
     .ssdot.on {
-      background: var(--indigo);
+      background: var(--accent);
     }
 
     .ss-note {
@@ -1832,7 +1832,7 @@
 
     /* Hobbies placeholder */
     .hob-box {
-      border: 1.5px dashed rgba(79, 70, 229, .2);
+      border: 1.5px dashed rgba(13,148,136, .2);
       border-radius: var(--r-lg);
       padding: 2.5rem 2rem;
       text-align: center;
@@ -1861,7 +1861,7 @@
     .rec-card {
       background: rgba(255, 255, 255, .03);
       border: 1px solid rgba(255, 255, 255, .07);
-      border-left: 3px solid var(--indigo);
+      border-left: 3px solid var(--accent);
       border-radius: var(--r-lg);
       padding: clamp(1rem, 2.5vw, 1.4rem);
     }
@@ -1875,7 +1875,7 @@
 
     .rec-q::before {
       content: '\201C';
-      color: var(--indigo);
+      color: var(--accent);
       font-size: 1.4rem;
       line-height: 0;
       vertical-align: -.3em;
@@ -1888,7 +1888,7 @@
     }
 
     .rec-by strong {
-      color: var(--indigo-l);
+      color: var(--accent-l);
       font-weight: 600;
     }
 
@@ -1915,7 +1915,7 @@
 
     .gh-card code {
       background: var(--ink-3);
-      color: var(--indigo-l);
+      color: var(--accent-l);
       padding: 1px 6px;
       border-radius: 4px;
       font-size: .75em;
@@ -1966,12 +1966,12 @@
     }
 
     footer a {
-      color: var(--indigo);
+      color: var(--accent);
       text-decoration: none;
     }
 
     footer a:hover {
-      color: var(--indigo-l);
+      color: var(--accent-l);
     }
 
     /* ─────────────────────────────────────────────
@@ -2079,7 +2079,7 @@
 
           <!-- Photo -->
           <div class="h-photo fi">
-            <img src="photos/Varnika_img.png" alt="Varnika Singh" />
+            <img src="photos/varnika_img.jpg" alt="Varnika Singh" />
           </div>
 
           <!-- Status badges -->
@@ -2118,16 +2118,16 @@
 
           <!-- Description -->
           <p class="h-desc fi">
-            Graduate Software Engineer building AI-powered applications, LLM pipelines, and distributed systems —
+            Graduate AI Engineer building AI-powered applications, agents, LLM pipelines, and distributed systems —
             end-to-end, production-ready, and thoughtfully engineered.
           </p>
 
           <!-- CTAs -->
           <div class="h-actions fi">
             <a href="https://drive.google.com/drive/folders/1T3HdQx4TkHfh0BkYe_p767pza3ujZi7g?usp=sharing"
-              target="_blank" class="btn btn-indigo">ACS Membership
+              target="_blank" class="btn btn-accent">ACS Membership
               ↗</a>
-            <a href="https://www.linkedin.com/in/varnika-singh24/" target="_blank" class="btn btn-indigo">LinkedIn
+            <a href="https://www.linkedin.com/in/varnika-singh24/" target="_blank" class="btn btn-accent">LinkedIn
               ↗</a>
             <div class="copy-wrap">
               <button class="btn btn-outline-dark" id="copybtn1">Copy Email</button>
@@ -2255,12 +2255,30 @@
 
       <div class="pg-tag fi" style="--title-col:var(--white)">
         <span class="pg-num"
-          style="background:rgba(79,70,229,.1);border-color:rgba(79,70,229,.22);color:var(--indigo-l)">03 / 06</span>
+          style="background:rgba(13,148,136,.1);border-color:rgba(13,148,136,.22);color:var(--accent-l)">03 / 06</span>
         <span class="pg-title" style="color:var(--white)">Experience</span>
       </div>
 
       <div class="tl fi">
 
+
+        <div class="tli" onclick="this.classList.toggle('open')">
+          <div class="tl-top">
+            <span class="tl-role">Graduate AI Engineer</span>
+            <span class="tl-date">Jun 2026 – Present</span>
+          </div>
+          <div class="tl-co">Helia</div>
+          <div class="tl-meta"><span class="mbadge">AI Agents</span><span class="mbadge">AWS</span><span
+              class="mbadge">GitHub Copilot</span></div>
+          <div class="tl-hint">Tap to expand</div>
+          <div class="tl-body">
+            <ul>
+              <li>Building AI agents and reusable agent skills to automate and support internal workflows.</li>
+              <li>Developing an application for the LMI policy, working with AWS services.</li>
+              <li>Using GitHub Copilot as part of an AI-assisted development workflow.</li>
+            </ul>
+          </div>
+        </div>
 
         <div class="tli" onclick="this.classList.toggle('open')">
           <div class="tl-top">
@@ -2435,7 +2453,7 @@
     <div class="wrap">
 
       <div class="pg-tag fi">
-        <span class="pg-num" style="background:var(--indigo-dim);border-color:rgba(79,70,229,.2);color:var(--indigo)">04
+        <span class="pg-num" style="background:var(--accent-dim);border-color:rgba(13,148,136,.2);color:var(--accent)">04
           / 06</span>
         <span class="pg-title">Education</span>
       </div>
@@ -2529,7 +2547,7 @@
           </a>
           <a href="https://learn.microsoft.com/api/credentials/share/en-us/VarnikaSingh-7097/156EED7D591D6350?sharingId=F6461A32ECE07CC4"
             target="_blank" class="cert-card">
-            <div class="cert-ico ci-m"><img src="photos/" /> </div>
+            <div class="cert-ico ci-m">☁️</div>
             <div class="cert-info">
               <h4>Microsoft Azure Fundamentals AZ-900</h4><span>Microsoft Azure</span>
             </div>
@@ -2567,7 +2585,7 @@
     <div class="wrap">
 
       <div class="pg-tag fi">
-        <span class="pg-num" style="background:var(--indigo-dim);border-color:rgba(79,70,229,.2);color:var(--indigo)">05
+        <span class="pg-num" style="background:var(--accent-dim);border-color:rgba(13,148,136,.2);color:var(--accent)">05
           / 06</span>
         <span class="pg-title">Projects</span>
       </div>
@@ -2646,7 +2664,7 @@
 
       <div class="pg-tag fi">
         <span class="pg-num"
-          style="background:rgba(79,70,229,.1);border-color:rgba(79,70,229,.22);color:var(--indigo-l)">06 / 06</span>
+          style="background:rgba(13,148,136,.1);border-color:rgba(13,148,136,.22);color:var(--accent-l)">06 / 06</span>
         <span class="pg-title" style="color:var(--white)">Beyond the Code</span>
       </div>
 
@@ -2665,12 +2683,12 @@
           </div>
 
           <div class="sl">
-            <img src="photos/img3.png" style="width: 40%; height: auto;" />
+            <img src="photos/img3.jpg" style="width: 40%; height: auto;" />
           </div>
 
 
           <div class="sl">
-            <img src="photos/img2.png " style="width: 100%; height: auto;" />
+            <img src="photos/img2.jpg" style="width: 100%; height: auto;" />
           </div>
 
 
@@ -2679,7 +2697,7 @@
           </div>
 
           <div class="sl">
-            <img src="photos/img1.png" style="width: 100%; height: auto;" />
+            <img src="photos/img1.jpg" style="width: 100%; height: auto;" />
           </div>
         </div>
         <div class="ss-ctrl">
@@ -2757,7 +2775,7 @@
         <img src="https://ghchart.rshah.org/github.com/singhvar24" alt="GitHub contributions"
           onerror="this.style.display='none';document.getElementById('ghfb').style.display='block'" />
 
-        <p><a href=" https://github.com/singhvar24" target="_blank"> Click here </a> to visit my GitHub profile </p>
+        <p><a href="https://github.com/singhvar24" target="_blank"> Click here </a> to visit my GitHub profile </p>
       </div>
 
       <!-- Contact -->
@@ -2767,7 +2785,7 @@
           or anything
           in between.</p>
         <div class="contact-btns">
-          <button class="btn btn-indigo" id="copybtn2">Copy Email Address</button>
+          <button class="btn btn-accent" id="copybtn2">Copy Email Address</button>
           <a href="https://www.linkedin.com/in/varnika-singh24/" target="_blank" class="btn btn-outline-dark">LinkedIn
             ↗</a>
         </div>
