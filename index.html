@@ -2047,6 +2047,16 @@
     }
     .theme-btn:hover { background: rgba(255, 255, 255, .12); }
     #main-nav.nav-light .theme-btn { background: rgba(11, 18, 32, .05); border-color: rgba(11, 18, 32, .15); color: #334155; }
+    .proj-wide { grid-column: 1 / -1; display: grid; grid-template-columns: 1.15fr 1fr; gap: 1.5rem; align-items: center; }
+    .proj-shot { display: block; border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--off-3); box-shadow: var(--shadow-card-light); }
+    .proj-shot img { display: block; width: 100%; height: auto; transition: transform .35s; }
+    .proj-shot:hover img { transform: scale(1.03); }
+    .proj-txt { display: flex; flex-direction: column; gap: .9rem; align-items: flex-start; }
+    .proj-stats { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .proj-stats span { font-size: var(--fs-xs); color: var(--ink-5); background: var(--off-2); border: 1px solid var(--off-3); border-radius: 999px; padding: 3px 11px; }
+    .proj-stats b { color: var(--accent); }
+    @media (max-width: 760px) { .proj-wide { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { .proj-shot img { transition: none; } .proj-shot:hover img { transform: none; } }
     .proj-feat { display: inline-block; margin-bottom: 8px; padding: 2px 10px; border-radius: 999px; font-size: var(--fs-xs);
       font-weight: 600; letter-spacing: .04em; color: var(--accent); background: var(--accent-dim); border: 1px solid rgba(13, 148, 136, .25); }
     html[data-theme="light"] {
@@ -2640,20 +2650,30 @@
 
       <!-- Projects -->
       <div class="proj-grid fi">
-        <div class="proj-card">
-          <span class="proj-feat">★ Featured</span>
-          <div class="proj-status">Live demo — 2026</div>
-          <h3>LLM Eval Lab — RAG Configuration Explorer</h3>
-          <p>Evaluates chunking × retriever × top-k on retrieval quality, estimated cost and latency, and plots the
-            Pareto frontier. Python toolkit and FastAPI service, plus a parity-tested in-browser port that powers an
-            interactive demo. Synthetic data; no LLM calls.</p>
-          <div class="proj-tech">
-            <span class="tpill">Python</span><span class="tpill">FastAPI</span><span class="tpill">RAG evaluation</span>
-            <span class="tpill">BM25 / TF-IDF / RRF</span><span class="tpill">JavaScript</span><span class="tpill">GitHub Actions</span>
-          </div>
-          <div class="proj-links">
-            <a href="https://singhvar24.github.io/llm-eval-lab/" target="_blank" rel="noopener" class="proj-a">Live Demo →</a>
-            <a href="https://github.com/singhvar24/llm-eval-lab" target="_blank" rel="noopener" class="proj-a">GitHub →</a>
+        <div class="proj-card proj-wide">
+          <a class="proj-shot" href="https://singhvar24.github.io/llm-eval-lab/" target="_blank" rel="noopener"
+            aria-label="Open the LLM Eval Lab live demo">
+            <img src="photos/llm-eval-lab.jpg" width="1000" height="582" loading="lazy" decoding="async"
+              alt="Screenshot of LLM Eval Lab: a scatter chart of retrieval quality against estimated cost for 36 RAG configurations, with a dashed Pareto frontier line" />
+          </a>
+          <div class="proj-txt">
+            <span class="proj-feat">★ Featured · Live demo</span>
+            <div class="proj-status">Personal project — 2026</div>
+            <h3>LLM Eval Lab — RAG Configuration Explorer</h3>
+            <p>Which retrieval setup is worth its cost? Evaluates chunking × retriever × top-k on quality, estimated cost and
+              latency, and plots the Pareto frontier. Python toolkit and FastAPI service, plus a JavaScript port that runs the
+              interactive demo in the browser. Synthetic data; no LLM calls.</p>
+            <div class="proj-stats" aria-label="Project facts">
+              <span><b>36</b> configurations</span><span><b>32</b> benchmark questions</span><span><b>20</b> automated tests</span><span><b>Python = JS</b> parity-tested</span>
+            </div>
+            <div class="proj-tech">
+              <span class="tpill">Python</span><span class="tpill">FastAPI</span><span class="tpill">RAG evaluation</span>
+              <span class="tpill">BM25 / TF-IDF / RRF</span><span class="tpill">JavaScript</span><span class="tpill">GitHub Actions</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://singhvar24.github.io/llm-eval-lab/" target="_blank" rel="noopener" class="proj-a">Live Demo →</a>
+              <a href="https://github.com/singhvar24/llm-eval-lab" target="_blank" rel="noopener" class="proj-a">GitHub →</a>
+            </div>
           </div>
         </div>
         <div class="proj-card">
