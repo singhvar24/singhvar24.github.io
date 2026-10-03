@@ -2661,14 +2661,15 @@
             <div class="proj-status">Personal project — 2026</div>
             <h3>LLM Eval Lab — RAG Configuration Explorer</h3>
             <p>Which retrieval setup is worth its cost? Evaluates chunking × retriever × top-k on quality, estimated cost and
-              latency, and plots the Pareto frontier. Python toolkit and FastAPI service, plus a JavaScript port that runs the
-              interactive demo in the browser. Synthetic data; no LLM calls.</p>
+              latency, plots the Pareto frontier, and tests whether retrieval scores can tell when a question is out of
+              scope. Python toolkit and FastAPI service with a Claude API layer for cited answers and LLM-as-judge grading
+              (mock-tested), plus a JavaScript port that powers the interactive demo. Synthetic data.</p>
             <div class="proj-stats" aria-label="Project facts">
-              <span><b>36</b> configurations</span><span><b>32</b> benchmark questions</span><span><b>20</b> automated tests</span><span><b>Python = JS</b> parity-tested</span>
+              <span><b>36</b> configurations</span><span><b>32</b> benchmark questions</span><span><b>31</b> automated tests</span><span><b>Python = JS</b> parity-tested</span>
             </div>
             <div class="proj-tech">
               <span class="tpill">Python</span><span class="tpill">FastAPI</span><span class="tpill">RAG evaluation</span>
-              <span class="tpill">BM25 / TF-IDF / RRF</span><span class="tpill">JavaScript</span><span class="tpill">GitHub Actions</span>
+              <span class="tpill">BM25 / TF-IDF / RRF</span><span class="tpill">Claude API</span><span class="tpill">JavaScript</span><span class="tpill">Docker</span><span class="tpill">GitHub Actions</span>
             </div>
             <div class="proj-links">
               <a href="https://singhvar24.github.io/llm-eval-lab/" target="_blank" rel="noopener" class="proj-a">Live Demo →</a>
